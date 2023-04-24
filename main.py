@@ -10,8 +10,22 @@ def main():
     #ac_3(csp4)
     #backtraking_search(csp4)
     csp9 = make_csp_for_9()
-    ac_3(csp9)
+
+    custom = [['C11',7],['C12',0],['C13',0],['C14',4],['C15',0],['C16',0],['C17',0],['C18',8],['C19',6],
+              ['C21',0],['C22',5],['C23',1],['C24',0],['C25',8],['C26',0],['C27',4],['C28',0],['C29',0],
+              ['C31',0],['C32',4],['C33',0],['C34',3],['C35',0],['C36',7],['C37',0],['C38',9],['C39',0],
+              ['C41',3],['C42',0],['C43',9],['C44',0],['C45',0],['C46',6],['C47',1],['C48',0],['C49',0],
+              ['C51',0],['C52',0],['C53',0],['C54',0],['C55',2],['C56',0],['C57',0],['C58',0],['C59',0],
+              ['C61',0],['C62',0],['C63',4],['C64',9],['C65',0],['C66',0],['C67',7],['C68',0],['C69',8],
+              ['C71',0],['C72',8],['C73',0],['C74',1],['C75',0],['C76',2],['C77',0],['C78',6],['C79',0],
+              ['C81',0],['C82',0],['C83',6],['C84',0],['C85',5],['C86',0],['C87',9],['C88',1],['C89',0],
+              ['C91',2],['C92',1],['C93',0],['C94',0],['C95',0],['C96',3],['C97',0],['C98',0],['C99',5]]
+
+    for i in custom:
+        if i[1] != 0:
+            csp9.domain[i[0]] = [i[1]]
     backtraking_search(csp9)
+
 
 def revise(csp,x1,x2):
     revise = False
@@ -35,7 +49,7 @@ def ac_3(csp):
     checkboard = []
     queue = deque()
     queue_view = set()
-    for i in sudoku.board_4: #initial the queue
+    for i in sudoku.board: #initial the queue
         queue.append([i[0],i[1]])
         queue_view.add(i[0]+i[1])
         queue.append([i[1],i[0]])
@@ -52,6 +66,7 @@ def ac_3(csp):
                     if istr not in queue_view:
                         queue.append(i)
                         queue_view.add(istr)
+
     if not check(csp):
         return False
     return True
@@ -98,6 +113,7 @@ def make_csp_for_9():
               "C91": [1,2,3,4,5,6,7,8,9],"C92": [1,2,3,4,5,6,7,8,9],"C93": [1,2,3,4,5,6,7,8,9],
               "C94": [1,2,3,4,5,6,7,8,9],"C95": [1,2,3,4,5,6,7,8,9],"C96": [1,2,3,4,5,6,7,8,9],
               "C97": [1,2,3,4,5,6,7,8,9],"C98": [1,2,3,4,5,6,7,8,9],"C99": [1,2,3,4,5,6,7,8,9],}
+    
     csp9 = csps.csp(variable,domain,sudoku.board)
     return csp9
 
@@ -112,15 +128,16 @@ def backtraking_search(csp):
         if not unassign_array:
             print('FOUND IT')
             print(csp.domain)
-            return csp.domain
+            return True
         tem = unassign_array.pop(0)
         for i in csp.domain[tem]:
             newcsp = copy.deepcopy(csp)
             newcsp.domain[tem] = [i]
             if ac_3(newcsp):
                 assign_array.append(tem)
-                backtraking(newcsp)
-
+                return backtraking(newcsp)
+        unassign_array.append(tem)
+        return False
         
     assign_array , unassign_array = findassign(csp.domain)
     backtraking(csp)
