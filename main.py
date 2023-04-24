@@ -48,7 +48,7 @@ def ac_3(csp):
                     if istr not in queue_view:
                         queue.append(i)
                         queue_view.add(istr)
-    print(csp.domain)
+    print(minimum_remaining_values(csp,'C11','C12'))
     
 def make_csp_for_4():
     variable = ['C11','C12','C13','C14','C21','C22','C23','C24','C31','C32','C33','C34','C41','C42','C43','C44']
@@ -58,6 +58,12 @@ def make_csp_for_4():
                "C41": [1, 2, 3, 4], "C42": [1, 2, 3, 4], "C43": [1, 2, 3, 4], "C44": [4]}
     csp4 = csps.csp(variable,domain,sudoku.board_4)
     return csp4
+
+def minimum_remaining_values(csp,x1,x2):
+    if len(csp.domain[x1]) > len(csp.domain[x2]):
+        return x1
+    else:
+        return x2
 
 if __name__ == '__main__':
     main()
