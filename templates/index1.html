@@ -7,7 +7,6 @@
     <p>Posted by Weiwen Huang</p>
 
     </header>
-
     <table style="border: 1px #000000 solid">
         <tbody>
             <tr>
@@ -132,13 +131,15 @@
                 "C91": $("#C91").val(),"C92":$("#C92").val(),"C93":$("#C93").val(),"C94":$("#C94").val(),"C95":$("#C95").val(),"C96":$("#C96").val(),"C97":$("#C97").val(),"C98":$("#C98").val(),"C99":$("#C99").val()},  /*提交的数据（json格式），从输入框中获取*/
                 /*result为后端函数返回的json*/
                 success: function (result) {
-                    for (var val in result.message) {
-                        document.getElementById(val).value= result.message[val];
+                    for (var index in result.message) {
+                        for(var val in result.message[index]){
+                            document.getElementById(val).value= result.message[index][val];
+                        }
                     }
-        
                 }
             });
         }
+        
         
 
     </script>
