@@ -181,10 +181,10 @@ def minimum_remaining_values(csp,unassign):
 def backtraking_search(csp):
     def backtraking(csp):#find 
         if not unassign_array:
-            #print('FOUND IT')
-            #print(csp.domain)
-            #print("fancy board")
-            #print(fancy)#this hashmap show how manny time it have been failed
+            print('FOUND IT')
+            print(csp.domain)
+            print("fancy board")
+            print(fancy)#this hashmap show how manny time it have been failed
             print('----------------------------------------------------')
             return csp.domain
         tem = minimum_remaining_values(csp,unassign_array)
@@ -206,7 +206,7 @@ def backtraking_search(csp):
         return None
     
 
-    fancy = {
+    fancy = { # for record how many pre node it have been visit
         'C11':0, 'C12':0, 'C13':0, 'C14':0, 'C15':0, 'C16':0, 'C17':0, 'C18':0, 'C19':0, 
         'C21':0, 'C22':0, 'C23':0, 'C24':0, 'C25':0, 'C26':0, 'C27':0, 'C28':0, 'C29':0, 
         'C31':0, 'C32':0, 'C33':0, 'C34':0, 'C35':0, 'C36':0, 'C37':0, 'C38':0, 'C39':0, 

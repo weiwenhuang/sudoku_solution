@@ -1,5 +1,4 @@
 <html>
-    <!--引入jQuery包用于使用ajax-->
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
     <header>
@@ -7,7 +6,7 @@
     <p>Posted by Weiwen Huang</p>
 
     </header>
-    <table style="border: 1px #000000 solid">
+    <table style="border: 1px #000000 solid" id="mytable">
         <tbody>
             <tr>
                 <td style="border: 1px #000000 solid"><input type ="text" size="1" id="C11" name="C11"></td>
@@ -111,14 +110,14 @@
         </tbody>
     </table>
 
-    <!--创建button按钮，点击则激发submit()事件-->
     <button onclick="submit();">Solve</button>
+    <button onclick="show();">show step by step</button>
     <script>
-        /*在这里编写submit()事件*/
+
         function submit() {
             $.ajax({
-                url: "submit", /*数据提交到submit处*/
-                type: "POST",  /*采用POST方法提交*/
+                url: "submit", 
+                type: "POST",  
                 data: { 
                 "C11": $("#C11").val(),"C12":$("#C12").val(),"C13":$("#C13").val(),"C14":$("#C14").val(),"C15":$("#C15").val(),"C16":$("#C16").val(),"C17":$("#C17").val(),"C18":$("#C18").val(),"C19":$("#C19").val(),
                 "C21": $("#C21").val(),"C22":$("#C22").val(),"C23":$("#C23").val(),"C24":$("#C24").val(),"C25":$("#C25").val(),"C26":$("#C26").val(),"C27":$("#C27").val(),"C28":$("#C28").val(),"C29":$("#C29").val(),
@@ -129,18 +128,34 @@
                 "C71": $("#C71").val(),"C72":$("#C72").val(),"C73":$("#C73").val(),"C74":$("#C74").val(),"C75":$("#C75").val(),"C76":$("#C76").val(),"C77":$("#C77").val(),"C78":$("#C78").val(),"C79":$("#C79").val(),
                 "C81": $("#C81").val(),"C82":$("#C82").val(),"C83":$("#C83").val(),"C84":$("#C84").val(),"C85":$("#C85").val(),"C86":$("#C86").val(),"C87":$("#C87").val(),"C88":$("#C88").val(),"C89":$("#C89").val(),
                 "C91": $("#C91").val(),"C92":$("#C92").val(),"C93":$("#C93").val(),"C94":$("#C94").val(),"C95":$("#C95").val(),"C96":$("#C96").val(),"C97":$("#C97").val(),"C98":$("#C98").val(),"C99":$("#C99").val()},  /*提交的数据（json格式），从输入框中获取*/
-                /*result为后端函数返回的json*/
-                success: function (result) {
+
+                success: function (result) {// get data from backend  result.message is a json, show how the board change step by step
+                    res = JSON.parse(JSON.stringify(result.message))
+                    end = res.length;
                     for (var index in result.message) {
                         for(var val in result.message[index]){
                             document.getElementById(val).value= result.message[index][val];
-                        }
+                        } 
                     }
                 }
             });
-        }
-        
-        
+        }  
 
+        var count = 0;
+        function refresh() {// for show step by sety
+            if (count > end ){
+                clearInterval(fader);
+            }
+            for (var i in res[count]){
+                document.getElementById(i).value= res[count][i];
+            }
+            count = count+1; 
+        }
+
+        function show(){//this make stepby step work
+            count = 0;
+            var fader = setInterval(function(){refresh()},200); //youcasn change speed here
+        } 
     </script>
+    
 </html>

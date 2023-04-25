@@ -204,10 +204,8 @@ def submit():
         ['C81',0],['C82',0],['C83',2],['C84',8],['C85',0],['C86',0],['C87',0],['C88',0],['C89',6],
         ['C91',0],['C92',5],['C93',0],['C94',9],['C95',0],['C96',0],['C97',0],['C98',0],['C99',0]]
     
-    solution = solver.run(testpuzzle)#if wanna do a test can change it to testpuzzle
-
+    solution = solver.run(sudokuinput)#if wanna do a test can change it to testpuzzle
     return {'message':solution}
-    
 
 #run ar port 8080
 app.run(port=8080)
