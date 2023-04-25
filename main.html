@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sudoku Solver</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<header>
+		<h1>Sudoku Solver</h1>
+	</header>
+	<main>
+		<div class="sudoku">
+      <table class="table">
+      <div>
+        <tr>
+          <td><input type="number" id="tentacles" name="tentacles" min="1" max="9" required
+            minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+        </tr>
+        <tr>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+        </tr>
+        <tr>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+        </tr>
+        <tr>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+        </tr>
+        <tr>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+        </tr>
+        <tr>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+        </tr>
+        <tr>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+        </tr>
+        <tr>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+        </tr>
+        <tr>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+          <td><input type="text" id="name" name="name" required
+          minlength="1" maxlength="1" size="1"></td>
+        </tr>
+      </div>
+      </table>
+		</div>
+		<button class="solve-button">Solve</button>
+	</main>
+
+</body>
+</html>

@@ -69,6 +69,7 @@ def test():
     for i in puzzle5:# choose puzzle to run
         if i[1] != 0:
             csp9.domain[i[0]] = [i[1]]
+    ac_3(csp9)
     backtraking_search(csp9)
 
 #this function get two varible and check if change x1's domain it will return True
@@ -167,9 +168,12 @@ def make_csp_for_9():
 def minimum_remaining_values(csp,unassign):
     index = 99999999
     for i in unassign:
-        if index > len(csp.domain[i]):
-            index = len(csp.domain[i])
+        domainlenth = len(csp.domain[i])
+        #print(i,':',domainlenth)
+        if index > domainlenth:
+            index = domainlenth
             res = i
+    #print("min:",res)
     return res
 
 #backtrack 
@@ -178,20 +182,36 @@ def backtraking_search(csp):
         if not unassign_array:
             print('FOUND IT')
             print(csp.domain)
+            print("fancy board")
+            print(fancy)#this hashmap show how manny time it have been failed
             return True
         tem = minimum_remaining_values(csp,unassign_array)
         unassign_array.remove(tem)
         for i in csp.domain[tem]:
+            #print('try',tem,'for',i)
             newcsp = copy.deepcopy(csp)
             newcsp.domain[tem] = [i]
             if ac_3(newcsp):
                 if backtraking(newcsp):
                     return True
                 else:# if not find put tem back
-
                     unassign_array.append(tem)
+            fancy[tem] += 1 
         return False
     
+
+    fancy = {
+        'C11':0, 'C12':0, 'C13':0, 'C14':0, 'C15':0, 'C16':0, 'C17':0, 'C18':0, 'C19':0, 
+        'C21':0, 'C22':0, 'C23':0, 'C24':0, 'C25':0, 'C26':0, 'C27':0, 'C28':0, 'C29':0, 
+        'C31':0, 'C32':0, 'C33':0, 'C34':0, 'C35':0, 'C36':0, 'C37':0, 'C38':0, 'C39':0, 
+        'C41':0, 'C42':0, 'C43':0, 'C44':0, 'C45':0, 'C46':0, 'C47':0, 'C48':0, 'C49':0, 
+        'C51':0, 'C52':0, 'C53':0, 'C54':0, 'C55':0, 'C56':0, 'C57':0, 'C58':0, 'C59':0, 
+        'C61':0, 'C62':0, 'C63':0, 'C64':0, 'C65':0, 'C66':0, 'C67':0, 'C68':0, 'C69':0, 
+        'C71':0, 'C72':0, 'C73':0, 'C74':0, 'C75':0, 'C76':0, 'C77':0, 'C78':0, 'C79':0, 
+        'C81':0, 'C82':0, 'C83':0, 'C84':0, 'C85':0, 'C86':0, 'C87':0, 'C88':0, 'C89':0, 
+        'C91':0, 'C92':0, 'C93':0, 'C94':0, 'C95':0, 'C96':0, 'C97':0, 'C98':0, 'C99':0, 
+          }
+    count = 0
     unassign_array = findassign(csp.domain)
     backtraking(csp)
 
@@ -210,7 +230,7 @@ def check(csp): #check is any val with not domain
     domain = csp.domain
     for i in domain:
         if len(domain[i]) == 0:
-            print("no solution")
+            #print("no solution")
             return False
     return True
 
