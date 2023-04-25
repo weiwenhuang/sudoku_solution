@@ -5,10 +5,11 @@ import copy
 
 
 
-def main():
-    test()
+def main(puzzle):
+    aaa = run(puzzle)
 
-def test():
+def run(inputpuzzle):
+    print("start working.....")
     csp9 = make_csp_for_9()
     # some puzzle for test
     puzzle1 = [
@@ -66,11 +67,11 @@ def test():
         ['C81',0],['C82',0],['C83',2],['C84',8],['C85',0],['C86',0],['C87',0],['C88',0],['C89',6],
         ['C91',0],['C92',5],['C93',0],['C94',9],['C95',0],['C96',0],['C97',0],['C98',0],['C99',0]]
 
-    for i in puzzle5:# choose puzzle to run
+    for i in inputpuzzle:# choose puzzle to run
         if i[1] != 0:
             csp9.domain[i[0]] = [i[1]]
     ac_3(csp9)
-    backtraking_search(csp9)
+    return backtraking_search(csp9)
 
 #this function get two varible and check if change x1's domain it will return True
 def revise(csp,x1,x2): 
@@ -184,7 +185,8 @@ def backtraking_search(csp):
             print(csp.domain)
             print("fancy board")
             print(fancy)#this hashmap show how manny time it have been failed
-            return True
+            print('----------------------------------------------------')
+            return csp.domain
         tem = minimum_remaining_values(csp,unassign_array)
         unassign_array.remove(tem)
         for i in csp.domain[tem]:
@@ -192,12 +194,13 @@ def backtraking_search(csp):
             newcsp = copy.deepcopy(csp)
             newcsp.domain[tem] = [i]
             if ac_3(newcsp):
-                if backtraking(newcsp):
-                    return True
+                solution =  backtraking(newcsp)
+                if solution:
+                    return solution
                 else:# if not find put tem back
                     unassign_array.append(tem)
-            fancy[tem] += 1 
-        return False
+            fancy[tem] += 1
+        return None
     
 
     fancy = {
@@ -213,7 +216,7 @@ def backtraking_search(csp):
           }
     count = 0
     unassign_array = findassign(csp.domain)
-    backtraking(csp)
+    return backtraking(csp)
 
 def findassign(domain):
 
@@ -235,4 +238,24 @@ def check(csp): #check is any val with not domain
     return True
 
 if __name__ == '__main__':
-    main()
+    puzzle1 = [
+        ['C11',7],['C12',0],['C13',0],['C14',4],['C15',0],['C16',0],['C17',0],['C18',8],['C19',6],
+        ['C21',0],['C22',5],['C23',1],['C24',0],['C25',8],['C26',0],['C27',4],['C28',0],['C29',0],
+        ['C31',0],['C32',4],['C33',0],['C34',3],['C35',0],['C36',7],['C37',0],['C38',9],['C39',0],
+        ['C41',3],['C42',0],['C43',9],['C44',0],['C45',0],['C46',6],['C47',1],['C48',0],['C49',0],
+        ['C51',0],['C52',0],['C53',0],['C54',0],['C55',2],['C56',0],['C57',0],['C58',0],['C59',0],
+        ['C61',0],['C62',0],['C63',4],['C64',9],['C65',0],['C66',0],['C67',7],['C68',0],['C69',8],
+        ['C71',0],['C72',8],['C73',0],['C74',1],['C75',0],['C76',2],['C77',0],['C78',6],['C79',0],
+        ['C81',0],['C82',0],['C83',6],['C84',0],['C85',5],['C86',0],['C87',9],['C88',1],['C89',0],
+        ['C91',2],['C92',1],['C93',0],['C94',0],['C95',0],['C96',3],['C97',0],['C98',0],['C99',5]]
+    puzzle5 = [
+        ['C11',0],['C12',0],['C13',0],['C14',0],['C15',0],['C16',6],['C17',0],['C18',8],['C19',0],
+        ['C21',3],['C22',0],['C23',0],['C24',0],['C25',0],['C26',2],['C27',7],['C28',0],['C29',0],
+        ['C31',7],['C32',0],['C33',5],['C34',1],['C35',0],['C36',0],['C37',6],['C38',0],['C39',0],
+        ['C41',0],['C42',0],['C43',9],['C44',4],['C45',0],['C46',0],['C47',0],['C48',0],['C49',0],
+        ['C51',0],['C52',8],['C53',0],['C54',0],['C55',9],['C56',0],['C57',0],['C58',2],['C59',0],
+        ['C61',0],['C62',0],['C63',0],['C64',0],['C65',0],['C66',8],['C67',3],['C68',0],['C69',0],
+        ['C71',0],['C72',0],['C73',4],['C74',0],['C75',0],['C76',7],['C77',8],['C78',0],['C79',5],
+        ['C81',0],['C82',0],['C83',2],['C84',8],['C85',0],['C86',0],['C87',0],['C88',0],['C89',6],
+        ['C91',0],['C92',5],['C93',0],['C94',9],['C95',0],['C96',0],['C97',0],['C98',0],['C99',0]]
+    main(puzzle5)
