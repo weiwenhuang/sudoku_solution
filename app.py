@@ -6,6 +6,6 @@ app = Flask(__name__)
 @app.route("/")
 #定义方法 用jinjia2引擎来渲染页面，并返回一个index.html页面
 def root():
-    return render_template("index.html")
+    return render_template("index.html",name="zxy",age=21)
 #定义app在8080端口运行
 app.run(port=8080)
