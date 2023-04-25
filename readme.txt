@@ -6,3 +6,7 @@ important for website!!!
 after you input the sukudo
 click <solve> first, it may take while
 after solution show up you can click <show step by step> to see how it change step bu step
+
+
+and if you have any trouble to open it or it lose some file, you can find it in my github
+https://github.com/weiwenhuang/AI_project2
