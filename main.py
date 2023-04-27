@@ -77,6 +77,7 @@ def run(inputpuzzle):
 def revise(csp,x1,x2): 
     revise = False
     res = False
+    memory  = []
     domain1 = csp.domain[x1]
     domain2 = csp.domain[x2]
     for i in domain1:
@@ -87,8 +88,10 @@ def revise(csp,x1,x2):
         if res:
             res = False
         else:
-            domain1.remove(i)
+            memory.append(i)
             revise = True
+    while memory:
+        domain1.remove(memory.pop())
     csp.domain[x1] = domain1
     return revise
 
