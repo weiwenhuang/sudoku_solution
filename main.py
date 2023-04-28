@@ -203,8 +203,9 @@ def backtraking_search(csp):
                 if solution:
                     return solution
                 else:# if not find put tem back
-                    unassign_array.append(tem)
-                    assign_array.remove(tem)
+                    if tem in assign_array:
+                        unassign_array.append(tem)
+                        assign_array.remove(tem)
             fancy[tem] += 1
         return None
     
